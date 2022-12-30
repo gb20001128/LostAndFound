@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <script th:src="@{/js/lazypic.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <title>失物招领--首页</title>
+    <style>
+        .lazy {
+            width: 300px;
+            height: 200px;
+            margin-left: 22px;
+            position: absolute;
+        }
+
+        .wordsforpic {
+            position: absolute;
+            left: 355px;
+            width: 1000px;
+        }
+
+        .content-body-1 {
+            width: 96%;
+            height: 200px;
+            padding: 10px 0;
+            left: 20px;
+            margin-bottom: 13px;
+            background-color: rgb(247, 245, 245);
+            position: relative;
+        }
+        img{
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <ul>
+        <li><a class="active" th:href="@{/}">首页</a></li>
+        <li><a th:href="@{/lostAndFound}">失物招领</a></li>
+        <li><a th:href="@{/aboutUs}">关于我们</a></li>
+<!--        <li class="nav-right" id="login"><a>退出登录</a></li>-->
+<!--        <li class="nav-right" id="user"><a>当前用户</a></li>-->
+    </ul>
+
+    <!-- 主体 -->
+    <div class="title">
+        <br>
+        <h2>
+            <span style="color: orange">橘子</span>
+            <span style="color: mediumpurple"> 带</span> "
+            <span style="color: cornflowerblue">你</span> "
+            <span style="color: pink"> 回家</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="color: #333333;font-size: 1rem">我们已收录 </span>
+            <span style="color: indianred">[[${count}]]</span>
+            <span style="color: #333333;font-size: 1rem"> 件遗失物品 </span>
+        </h2>
+    </div>
+    <br>
+
+    <!-- 主页内容体 -->
+    <div class="content-body">
+
+        <div class="content-body-1" th:each="item:${list}">
+            <img th:src="@{'http://localhost:8080/item/'+${item.photoName}}"  class="lazy" >
+            <div class="wordsforpic">
+                <h3>地点：[[${item.place}]]</h3>
+                <p style="color: cadetblue">&nbsp;&nbsp;&nbsp;&nbsp;[[${item.content}]]</p>
+                <p style="color: pink"><span style="color: #333333">联系方式：</span> [[${item.number}]]</p><br>
+                <p style="font-size: 1rem;color: darkgray;">时间：[[${item.time}]]</p>
+            </div>
+        </div>
+
+<!--        &lt;!&ndash; 1 &ndash;&gt;-->
+<!--        <div class="content-body-1">-->
+<!--            <img src="http://localhost:8080/item/1.png"  class="lazy" >-->
+<!--            <div class="wordsforpic">-->
+<!--                <h3>地点：教二302</h3>-->
+<!--                <p style="color: cadetblue">&nbsp;&nbsp;&nbsp;&nbsp;今天中午在教二302拾到一个棕色钱包，里面若干张纸币和一串钥匙</p>-->
+<!--                <p style="color: pink"><span style="color: #333333">联系方式：</span>18373848273</p><br>-->
+<!--                <p style="font-size: 1rem;color: darkgray">时间：2022年08月14日-17时53分</p>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; 2 &ndash;&gt;-->
+<!--        <div class="content-body-1">-->
+<!--            <img src="http://localhost:8080/item/2.png"  class="lazy" >-->
+<!--            <div class="wordsforpic">-->
+<!--                <h3>地点：一食堂二楼鸡公煲</h3>-->
+<!--                <p style="color: cadetblue">&nbsp;&nbsp;&nbsp;&nbsp;晚上在食堂捡到一张水卡，刘**同学看到尽快联系我</p>-->
+<!--                <p style="color: pink"><span style="color: #333333">联系方式：</span>1386378641</p><br>-->
+<!--                <p style="font-size: 1rem;color: darkgray">时间：2022年08月10日-09时06分</p>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; 3 &ndash;&gt;-->
+<!--        <div class="content-body-1">-->
+<!--            <img src="http://localhost:8080/item/3.png"  class="lazy">-->
+<!--            <div class="wordsforpic">-->
+<!--                <h3>地点：行政中心</h3>-->
+<!--                <p style="color: cadetblue">&nbsp;&nbsp;&nbsp;&nbsp;快认领，这是谁的手机，小灵通牌的</p>-->
+<!--                <p style="color: pink"><span style="color: #333333">联系方式：</span>15184728493</p><br>-->
+<!--                <p style="font-size: 1rem;color: darkgray">时间：2022年08月08日-17时53分</p>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</body>
+
+</html>
+<!--<script>-->
+<!--    var mask = document.getElementById("mask");-->
+<!--    $("#user").click(function () {-->
+<!--        mask.style.display = "block";-->
+<!--        // alert("您好，欢迎您！");//测试-->
+<!--    });-->
+<!--    var exit = document.getElementById("exit");-->
+<!--    exit.onclick = function () {-->
+<!--        mask.style.display = "none";-->
+<!--    }-->
+
+<!--    var mask1 = document.getElementById("mask1");-->
+<!--    $("#login").click(function () {-->
+<!--        mask1.style.display = "block";-->
+<!--        // alert("您好，欢迎您！");//测试-->
+<!--    });-->
+<!--    var login_exit = document.getElementById("login-exit");-->
+<!--    login_exit.onclick = function () {-->
+<!--        mask1.style.display = "none";-->
+<!--    }-->
+
+<!--</script>-->

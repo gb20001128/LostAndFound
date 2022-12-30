@@ -1,0 +1,94 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.title {
+    margin-left: 20px;
+}
+
+.nav-right {
+    float: right;
+}
+
+#mask,
+#mask1 {
+    display: none;
+}
+
+.mask,
+.mask1 {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 97;
+}
+
+.mask-box,
+.login-box {
+    width: 500px;
+    height: 300px;
+    /* display: none; */
+    background: rgba(255, 255, 255, 1);
+    z-index: 98;
+    position: absolute;
+    margin-left: 50%;
+    left: -303px;
+    top: 200px;
+    border-radius: 10px;
+}
+
+.content,
+.login {
+    margin: 50px 100px;
+}
+
+.content span,
+.login span {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.content button,
+.login button {
+    width: 93px;
+    font-size: 17px;
+    height: 36px;
+    font-weight: 800;
+}
+
+.content button:first-child,
+.login button:first-child {
+    margin: 14px 0 0 20px;
+}
+
+.content button:last-child,
+.login button:last-child {
+    margin: 10px 41.5px 0;
+}
+
+.active{
+    background-color: #111111
+}

@@ -1,0 +1,46 @@
+.body {
+    margin-left: 21px;
+}
+
+#textarea {
+    margin-left: 3%;
+}
+
+#forpre {
+    width: 500px;
+    border: #ccc9c9 solid 1px;
+    margin-left: 3%;
+    margin-top: 3%;
+}
+
+#preview {
+    width: 100%;
+}
+
+.forshangchuan {
+    margin-left: 3%;
+    margin-top: 3%;
+}
+
+#upload-input {
+    width: 100px;
+    height: 37px;
+}
+
+#changePic {
+    border: none;
+    background-color: #333;
+    color: white;
+    width: 100px;
+    height: 37px;
+}
+
+#shangchuan {
+    border: none;
+    background-color: #333;
+    color: white;
+    width: 100px;
+    height: 37px;
+    margin-top: 3%;
+    margin-left: 3%;
+}

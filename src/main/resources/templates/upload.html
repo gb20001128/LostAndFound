@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/upload.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <title>失物招领--上传</title>
+</head>
+
+<body>
+<!-- 导航栏 -->
+<ul>
+    <li><a  th:href="@{/}">首页</a></li>
+    <li><a class="active"  th:href="@{/lostAndFound}">失物招领</a></li>
+    <li><a th:href="@{/aboutUs}">关于我们</a></li>
+    <!--        <li class="nav-right" id="login"><a>退出登录</a></li>-->
+    <!--        <li class="nav-right" id="user"><a>当前用户</a></li>-->
+</ul>
+
+
+    <!-- 标题主体 -->
+<div class="title">
+    <h2>
+        <span style="color: orange">橘子</span>
+        <span style="color: mediumpurple"> 带</span> "
+        <span style="color: cornflowerblue">你</span> "
+        <span style="color: pink"> 回家</span> </h2>
+</div>
+
+    <!-- 内容主体 -->
+    <div class="body">
+        <h4>失物招领启示</h4>
+        <form th:action="@{/upThis}" method="post" enctype="multipart/form-data">
+            <textarea name="content" id="textarea" cols="130" rows="6"  placeholder="失物招领启示..."
+                style="font-size: 15px; resize: none;">
+            </textarea>
+            <br>
+            <input type="text" placeholder="拾金地点..." name="place" style="margin-left: 3%; margin-top: 3%;border-color: #111111;">
+            <br>
+            <input type="text" placeholder="联系方式..." name="number" style="margin-left: 3%; margin-top: 3%;border-color: #111111;">
+
+            <div class="forshangchuan">
+                <input type="file" name="photo" id="upload-input" style="position: absolute; opacity: 0;"
+                    accept="image/jpg,image/png,image/jpeg" onchange="showImg(this)">
+                <button id="changePic">上传图片</button>
+            </div>
+            <div id="forpre">
+                <img id="preview"  />
+            </div>
+
+            <button type="submit" id="shangchuan">发布</button>
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>
+<script>
+    function showImg(input) {
+        var file = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#preview").attr("src", e.target.result);
+        }
+        reader.readAsDataURL(file);
+        console.log(file);
+    }
+
+    $("#shangchuan").click(function () {
+        var img = document.getElementById("preview");
+        var img_src = img.src;
+
+        var formData = new FormData();
+        var file = document.getElementById("upload-input").files[0];
+        formData.append("file", file);
+
+        var text = document.getElementById("textarea");
+        var text_value = text.value;
+        formData.append("text", text_value);
+        if (text_value == "") {
+            alert("请输入您的文字介绍");
+        } else if (img_src == "") {
+            alert("请上传图片");
+            return false;
+        } else {
+
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8080/tuodan",
+                dataType: "json",
+                data: formData,
+                processData: false,
+                contentType: "application/x-www-form-urlencoded",
+                async: false,
+                // cache: false,
+                success: function (data) {
+                    console.log(data); //测试
+                    console.log(formData); //测试
+                    alert("上传成功");
+                }
+            });
+
+        }
+    });
+</script>
+<script>
+    var mask = document.getElementById("mask");
+    $("#user").click(function () {
+        mask.style.display = "block";
+        // alert("您好，欢迎您！");//测试
+    });
+    var exit = document.getElementById("exit");
+    exit.onclick = function () {
+        mask.style.display = "none";
+    }
+
+    var mask1 = document.getElementById("mask1");
+    $("#login").click(function () {
+        mask1.style.display = "block";
+        // alert("您好，欢迎您！");//测试
+    });
+    var login_exit = document.getElementById("login-exit");
+    login_exit.onclick = function () {
+        mask1.style.display = "none";
+    }
+
+</script>

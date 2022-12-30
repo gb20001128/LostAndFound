@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <title>失物招领--关于我们</title>
+    <style>
+        .body {
+            margin-left: 21px;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 导航栏 -->
+<ul>
+    <li><a th:href="@{/}">首页</a></li>
+    <li><a th:href="@{/lostAndFound}">失物招领</a></li>
+    <li><a class="active"  th:href="@{/aboutUs}">关于我们</a></li>
+    <!--        <li class="nav-right" id="login"><a>退出登录</a></li>-->
+    <!--        <li class="nav-right" id="user"><a>当前用户</a></li>-->
+</ul>
+
+    <!-- 标题主体 -->
+<!-- 主体 -->
+    <div class="title">
+        <h2>
+            <span style="color: orange">橘子</span>
+            <span style="color: mediumpurple"> 带</span> "
+            <span style="color: cornflowerblue">你</span> "
+            <span style="color: pink"> 回家</span> </h2>
+    </div>
+    <!-- 主体内容 -->
+    <div class="body">
+        <h3>关于我们</h3>
+        <p>
+            橘子带"你"回家是一个网站，可以帮助大家查找丢失的物品，并且可以提供招领的服务。
+        </p>
+        <h3>联系我们</h3>
+        <p>
+            邮箱：
+            <a href="">xxx@xx.com</a>
+
+    </div>
+
+
+</body>
+
+</html>
+<script>
+    var mask = document.getElementById("mask");
+    $("#user").click(function () {
+        mask.style.display = "block";
+        // alert("您好，欢迎您！");//测试
+    });
+    var exit = document.getElementById("exit");
+    exit.onclick = function () {
+        mask.style.display = "none";
+    }
+
+    var mask1 = document.getElementById("mask1");
+    $("#login").click(function () {
+        mask1.style.display = "block";
+        // alert("您好，欢迎您！");//测试
+    });
+    var login_exit = document.getElementById("login-exit");
+    login_exit.onclick = function () {
+        mask1.style.display = "none";
+    }
+
+</script>
